@@ -18,7 +18,7 @@
     <%--        form action="이동할url" method="get|post|delete|put" --%>
     <%--         get(select), post(insert), delete(delete), put(update) --%>
     <%--        button type="submit" : 기본기능 - 해당 url 이동됨 --%>
-    <form action="/exam04/dept/add" method="post">
+    <form action="/exam05/dept/add" method="post">
         <%--        todo: 부서명 입력양식 --%>
         <div class="mb-3">
             <label for="dname" class="form-label">부서 이름</label>

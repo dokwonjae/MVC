@@ -11,30 +11,34 @@
     <title>Document</title>
 </head>
 <body>
-<jsp:include page="../../common/header.jsp" />
+<jsp:include page="../../common/header.jsp"/>
 
 <div class="container">
     <%--    todo: insert : post 방식으로 벡엔드 연결 --%>
     <%--        form action="이동할url" method="get|post|delete|put" --%>
     <%--         get(select), post(insert), delete(delete), put(update) --%>
     <%--        button type="submit" : 기본기능 - 해당 url 이동됨 --%>
-    <form action="/exam04/dept/add" method="post">
+    <form action="/exam06/member/add" method="post">
         <%--        todo: 부서명 입력양식 --%>
         <div class="mb-3">
-            <label for="dname" class="form-label">부서 이름</label>
-            <input type="text" class="form-control" id="dname" required name="dname">
+            <label for="ename" class="form-label">사원명</label>
+            <input type="text" class="form-control" id="ename" required name="ename">
         </div>
         <%--       todo: 부서위치 입력양식--%>
         <div class="mb-3">
-            <label for="loc" class="form-label">부서 위치</label>
-            <input type="text" class="form-control" id="loc" required name="loc">
+            <label for="job" class="form-label">직위</label>
+            <input type="text" class="form-control" id="job" required name="job">
+        </div>
+        <div class="mb-3">
+            <label for="manager" class="form-label">매니저</label>
+            <input type="text" class="form-control" id="manager" required name="manager">
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>
 </div>
-<jsp:include page="../../common/footer.jsp" />
+<jsp:include page="../../common/footer.jsp"/>
 </body>
 </html>
 
