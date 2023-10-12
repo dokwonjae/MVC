@@ -29,7 +29,7 @@ import java.util.Optional;
 @RequestMapping("/exam09")
 public class Dept09Controller {
 
-    //  todo: 객체 가져오기
+//  todo: 객체 가져오기
     @Autowired
     Dept09Service deptService;
 
@@ -92,4 +92,9 @@ public class Dept09Controller {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+// todo: 연습문제 3)부서클래스를 참고하여
+//    Member09Controller 클래스를 만들어서 createMember() 함수를 정의하세요
+//    단, 예외처리와 ResponseEntity 를 사용해 데이터와 메세지를 같이 전송하세요
+//    url : /member
 }

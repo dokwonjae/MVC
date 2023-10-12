@@ -1,6 +1,6 @@
 package com.example.modelexam.controller.exam09;
 
-
+import com.example.modelexam.model.Dept;
 import com.example.modelexam.model.Member;
 import com.example.modelexam.service.exam09.Member09Service;
 import lombok.extern.slf4j.Slf4j;
@@ -56,7 +56,7 @@ public class Member09Controller {
         }
     }
 
-    //    todo: 상세조회
+//    todo: 상세조회
     @GetMapping("/member/{eno}")
     public ResponseEntity<Object> getMemberId(
             @PathVariable long eno
@@ -77,12 +77,11 @@ public class Member09Controller {
         }
     }
 
-    /**
-     * 저장 함수
-     */
+//  todo: 저장 함수
     @PostMapping("/member")
-    public ResponseEntity<Object> createmember(
-            @RequestBody Member member) {
+    public ResponseEntity<Object> createMember(
+            @RequestBody Member member
+    ){
         try {
             List<Member> list = memberService.save(member);
             return new ResponseEntity<>(list, HttpStatus.CREATED);

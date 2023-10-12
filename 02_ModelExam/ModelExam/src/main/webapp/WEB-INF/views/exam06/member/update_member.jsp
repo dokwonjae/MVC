@@ -15,7 +15,7 @@
 <jsp:include page="../../common/header.jsp"/>
 <%--본문--%>
 <div class="container">
-    <form action="/exam05/member/edit/${member.eno}" method="post">
+    <form action="/exam06/member/edit/${member.eno}" method="post">
         <%-- TODO: 1) springboot 에서 아래와 같이 hidden 값을 전송하면 :  put 방식으로 인식해서 연결해줌    --%>
         <%--       2) application.propeties : spring.mvc.hiddenmethod.filter.enabled=true --%>
         <input type="hidden" name="_method" value="put"/>
@@ -59,11 +59,13 @@
             <button type="submit" class="btn btn-primary">Update</button>
         </div>
     </form>
+
     <form id="delete-form" action="/exam06/member/delete/${member.eno}" method="post">
         <%--    TODO: springboot 에서 아래와 같이 hidden 값을 전송하면 :  delete 방식으로 인식해서 연결해줌    --%>
         <input type="hidden" name="_method" value="delete"/>
         <button type="submit" class="btn btn-danger">Delete</button>
     </form>
+
 </div>
 <%--footer--%>
 <jsp:include page="../../common/footer.jsp"/>

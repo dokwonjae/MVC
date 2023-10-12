@@ -29,7 +29,7 @@ import java.util.Optional;
 @RequestMapping("/exam11")
 public class Dept11Controller {
 
-    //  todo: 객체 가져오기
+//  todo: 객체 가져오기
     @Autowired
     Dept11Service deptService;
 
@@ -133,7 +133,13 @@ public class Dept11Controller {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+// todo: 연습문제 5)부서클래스를 참고하여
+//     Member11Controller 클래스를 만들어서 deleteMember() 함수를 정의하세요
+//    단, 예외처리와 ResponseEntity 를 사용해 데이터와 메세지를 같이 전송하세요
+//    url : /member/delete/{eno}
 }
+
 
 
 

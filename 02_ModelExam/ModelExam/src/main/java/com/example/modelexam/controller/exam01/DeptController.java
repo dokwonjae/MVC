@@ -18,6 +18,26 @@ import java.util.List;
  * date : 2023-10-10
  * description : 부서 컨트롤러 , @Slf4j, findAll()
  * 요약 :
+ *         @Slf4j : 로깅 라이브러리 (롬북) , 인터페이스 : 자식클래스(logback)
+ *         사용법 : 예) 1) @Slf4j 클래스 위에 달고
+ *                    2) 로깅 하고 싶은 라인에서 log.debug(값.toString());
+ *         설치 : Logback 프러퍼티 파일2개 복사, build.gradle 라이브러리 4개 추가
+ *         @Service : 클래스 위에 달고, 달린 클래스는 서버가 가동될때 자동으로 객체 생성됨
+ *         (IOC)
+ *         예) @Repository, @Component, @Bean 등
+ *         @Autowired : 위에서 생성된 객체를 가져오기 할때 사용(DI)
+ *         @GetMapping : Get 방식으로 오는 요청에(조회요청) 대해 실행되는 어노테이션
+ *         (주로 db select 문이 실행됨)
+ *         @PostMapping : Post 방식으로 오는 요청에(insert 요청) 대해 실행
+ *         @PutMapping  : Put 방식으로 오는 요청에(update 요청) 대해 실행
+ *         @DeleteMapping : Delete 방식으로 오는 요청에(delete 요청) 대행 실행
+ *         @Controller    : return 값 - jsp 페이지명 (SSR 프로그램)
+ *          사용) jsp/thymeleaf + springboot 연동
+ *         @RestController : return 값 - json 객체 데이터
+ *          사용) react/vue(SPA) + springboot 연동
+ *         ResponseEntity 객체 : 신호 보내는 객체
+ *          예) HttpStatus.OK (성공 : 200)
+ *              HttpStatus.INTERNAL_SERVER_ERROR(500)
  * <p>
  * ===========================================================
  * DATE            AUTHOR             NOTE
@@ -37,7 +57,7 @@ import java.util.List;
 @RequestMapping("/exam01")
 public class DeptController {
 
-//    TODO: MVC 의 Model(Service클래스) 객체 가져오기
+//    todo: MVC 의 Model(Service클래스) 객체 가져오기
     @Autowired
     DeptService deptService;
 
@@ -53,4 +73,16 @@ public class DeptController {
 
         return "exam01/dept/dept_all.jsp";
     }
+
+//  todo: 연습 1)
+//    MemberService 클래스를 만들고 findAll() 함수를 정의한다.
+//    MemberController 클래스를 만들어서 getMemberAll() 함수를 정의하고,
+//    샘플데이터 뷰로(jsp : member_all.jsp) 전송해 보세요.
 }
+
+
+
+
+
+
+

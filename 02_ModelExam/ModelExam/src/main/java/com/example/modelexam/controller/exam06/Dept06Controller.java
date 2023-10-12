@@ -37,7 +37,7 @@ import java.util.List;
 @RequestMapping("/exam06")
 public class Dept06Controller {
 
-    //    todo: MVC 의 Model(Service클래스) 객체 가져오기
+//    todo: MVC 의 Model(Service클래스) 객체 가져오기
     @Autowired
     Dept06Service deptService;
 
@@ -57,20 +57,20 @@ public class Dept06Controller {
     @GetMapping("/dept/{dno}")
     public String getDeptId(@PathVariable long dno,
                             Model model
-    ) {
+                            ) {
 //      todo: 서비스 상세조회 호출
         Dept dept = deptService.findById(dno);
         model.addAttribute("dept", dept);
         return "exam06/dept/dept_id.jsp";
     }
 
-    //  todo: 부서 추가 페이지 열기 함수
+//  todo: 부서 추가 페이지 열기 함수
     @GetMapping("/dept/addition")
     public String addDept() {
         return "exam06/dept/add_dept.jsp";
     }
 
-    //  todo: 저장 버튼 클릭시 db 저장하기 함수
+//  todo: 저장 버튼 클릭시 db 저장하기 함수
     @PostMapping("/dept/add")
     public RedirectView createDept(@ModelAttribute Dept dept) {
 //      todo: 서비스 저장함수 호출
@@ -80,7 +80,7 @@ public class Dept06Controller {
         return new RedirectView("/exam06/dept");
     }
 
-    //  todo: 수정 페이지 열기 : 화면이 보일때 데이터도 화면에 미리 출력해야함
+//  todo: 수정 페이지 열기 : 화면이 보일때 데이터도 화면에 미리 출력해야함
     @GetMapping("/dept/edition/{dno}")
     public String editDept(@PathVariable long dno, Model model) {
 //      todo: 1) 상세 조회
@@ -89,7 +89,7 @@ public class Dept06Controller {
         return "exam06/dept/update_dept.jsp";
     }
 
-    //  todo: 수정 저장 : 리다이렉트(강제 이동) : 전체조회페이지로 이동
+//  todo: 수정 저장 : 리다이렉트(강제 이동) : 전체조회페이지로 이동
     @PutMapping("/dept/edit/{dno}")
     public RedirectView updateDept(@PathVariable long dno,
                                    @ModelAttribute Dept dept) {
@@ -98,7 +98,7 @@ public class Dept06Controller {
         return new RedirectView("/exam06/dept");
     }
 
-    //  todo: 삭제 함수 : 삭제 후 전체 조회로 리다이렉트(강제 이동)
+//  todo: 삭제 함수 : 삭제 후 전체 조회로 리다이렉트(강제 이동)
     @DeleteMapping("/dept/delete/{dno}")
     public RedirectView deleteDept(@PathVariable int dno) {
         deptService.removeById(dno); // db 삭제
@@ -106,7 +106,17 @@ public class Dept06Controller {
         return new RedirectView("/exam06/dept"); // 전체조회 강제이동
     }
 
+
+//  todo: 연습 6)
+//    Member06Service 클래스를 만들고 removeById() 함수를 정의한다.
+//    Member06Controller 클래스를 만들어서 deleteMember() 함수를 정의
+//    update_member.jsp 삭제버튼과 url 를 추가한다.
+//    editMember()
+//    - url : /member/delete/{eno}
+//    - redirect url : /exam06/member
+
 }
+
 
 
 

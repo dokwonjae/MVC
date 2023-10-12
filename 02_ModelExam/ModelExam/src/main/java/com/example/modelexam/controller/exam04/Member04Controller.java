@@ -29,7 +29,7 @@ import java.util.List;
 @RequestMapping("/exam04")
 public class Member04Controller {
 
-    //   todo: 서비스 객체 가져오기
+//   todo: 서비스 객체 가져오기
     @Autowired
     Member04Service memberService;
 
@@ -55,13 +55,13 @@ public class Member04Controller {
         return "exam04/member/member_id.jsp";
     }
 
-    //  todo: 새로운 회원 추가 페이지 이동 함수
+//  todo: 새로운 회원 추가 페이지 이동 함수
     @GetMapping("/member/addition")
     public String addMember() {
         return "exam04/member/add_member.jsp";
     }
 
-    //  todo: db 저장 함수
+//  todo: db 저장 함수
     @PostMapping("/member/add")
     public RedirectView createMember(
             @ModelAttribute Member member
@@ -71,6 +71,7 @@ public class Member04Controller {
         return new RedirectView("/exam04/member");
     }
 }
+
 
 
 

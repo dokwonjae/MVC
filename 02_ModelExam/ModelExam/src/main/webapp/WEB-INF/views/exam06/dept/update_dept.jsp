@@ -16,12 +16,12 @@
 <%--본문--%>
 <div class="container">
     <form action="/exam06/dept/edit/${dept.dno}" method="post">
-        <%-- TODO: 1) springboot 에서 아래와 같이 hidden 값을 전송하면 :  put 방식으로 인식해서 연결해줌    --%>
-        <%--       2) application.propeties : spring.mvc.hiddenmethod.filter.enabled=true --%>
+<%-- TODO: 1) springboot 에서 아래와 같이 hidden 값을 전송하면 :  put 방식으로 인식해서 연결해줌    --%>
+<%--       2) application.propeties : spring.mvc.hiddenmethod.filter.enabled=true --%>
         <input type="hidden" name="_method" value="put"/>
-        <%--     todo: 부서번호 : 화면에서 숨김 --%>
+<%--     todo: 부서번호 : 화면에서 숨김 --%>
         <input type="hidden" name="dno" value="${dept.dno}"/>
-        <%--     todo: 부서이름 입력양식   --%>
+<%--     todo: 부서이름 입력양식   --%>
         <div class="mb-3">
             <label for="dname" class="form-label">부서 이름</label>
             <input type="text"
@@ -32,7 +32,7 @@
                    value="${dept.dname}"
             >
         </div>
-        <%--     todo: 부서위치 입력양식--%>
+<%--     todo: 부서위치 입력양식--%>
         <div class="mb-3">
             <label for="loc" class="form-label">부서 위치</label>
             <input type="text"
@@ -43,7 +43,7 @@
                    value="${dept.loc}"
             >
         </div>
-        <%--     todo: 수정 버튼--%>
+<%--     todo: 수정 버튼--%>
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">Update</button>
         </div>

@@ -17,7 +17,7 @@
 <%-- todo: 본문--%>
 <div class="container">
     <h3>전달받은 객체는 ${member} 입니다.</h3>
-    <%--    todo: 테이블 형태로 화면 출력 --%>
+<%--    todo: 테이블 형태로 화면 출력 --%>
     <table class="table">
         <thead>
         <tr>
@@ -30,14 +30,14 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>${member.eno}</td>
-            <td>${member.ename}</td>
-            <td>${member.job}</td>
-            <td>${member.manager}</td>
-            <td>${member.insertTime}</td>
-            <td>${member.updateTime}</td>
-        </tr>
+            <tr>
+                <td>${member.eno}</td>
+                <td>${member.ename}</td>
+                <td>${member.job}</td>
+                <td>${member.manager}</td>
+                <td>${member.insertTime}</td>
+                <td>${member.updateTime}</td>
+            </tr>
         </tbody>
     </table>
 
@@ -52,6 +52,7 @@
 <jsp:include page="../../common/footer.jsp" />
 </body>
 </html>
+
 
 
 

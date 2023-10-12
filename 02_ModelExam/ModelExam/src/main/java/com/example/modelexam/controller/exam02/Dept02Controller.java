@@ -1,7 +1,7 @@
 package com.example.modelexam.controller.exam02;
 
 import com.example.modelexam.model.Dept;
-
+import com.example.modelexam.service.exam01.DeptService;
 import com.example.modelexam.service.exam02.Dept02Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ import java.util.List;
 @RequestMapping("/exam02")
 public class Dept02Controller {
 
-    //    todo: MVC 의 Model(Service클래스) 객체 가져오기
+//    todo: MVC 의 Model(Service클래스) 객체 가져오기
     @Autowired
     Dept02Service deptService;
 
@@ -59,20 +59,22 @@ public class Dept02Controller {
     @GetMapping("/dept/{dno}")
     public String getDeptId(@PathVariable long dno,
                             Model model
-    ) {
+                            ) {
 //      todo: 서비스 상세조회 호출
         Dept dept = deptService.findById(dno);
         model.addAttribute("dept", dept);
         return "exam02/dept/dept_id.jsp";
     }
 
-    //  todo: 연습 2)
+//  todo: 연습 2)
 //    Member02Service 클래스를 만들고 findById() 함수를 정의한다.
 //    Member02Controller 클래스를 만들어서 getMemberId() 함수를 정의하고,
 //    샘플데이터 뷰로(jsp : member_id.jsp) 전송해 보세요.
 //    url : /member/{eno}
 //    jsp : exam02/member/member_id.jsp
+//    url test : http://localhost:8000/exam02/member/7369
 }
+
 
 
 

@@ -29,7 +29,7 @@ import java.util.List;
 @RequestMapping("/exam01")
 public class MemberController {
 
-    //   todo: 서비스 객체 가져오기
+//   todo: 서비스 객체 가져오기
     @Autowired
     MemberService memberService;
 

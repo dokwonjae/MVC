@@ -36,7 +36,7 @@ import java.util.List;
 @RequestMapping("/exam03")
 public class Dept03Controller {
 
-    //    todo: MVC 의 Model(Service클래스) 객체 가져오기
+//    todo: MVC 의 Model(Service클래스) 객체 가져오기
     @Autowired
     Dept03Service deptService;
 
@@ -56,14 +56,14 @@ public class Dept03Controller {
     @GetMapping("/dept/{dno}")
     public String getDeptId(@PathVariable long dno,
                             Model model
-    ) {
+                            ) {
 //      todo: 서비스 상세조회 호출
         Dept dept = deptService.findById(dno);
         model.addAttribute("dept", dept);
         return "exam03/dept/dept_id.jsp";
     }
 
-    //  todo: @ResponseBody : 함수의 결과로 json 데이터를 리턴하고자
+//  todo: @ResponseBody : 함수의 결과로 json 데이터를 리턴하고자
 //        할때 사용하는 어노테이션
 //    사용법 : 함수의 위에 붙이기
     @PostMapping("/dept")
@@ -74,12 +74,14 @@ public class Dept03Controller {
         List<Dept> list = deptService.save(dept);
         return list;
     }
-    //  todo: 연습 3)
+
+//  todo: 연습 3)
 //    Member03Service 클래스를 만들고 save() 함수를 정의한다.
 //    Member03Controller 클래스를 만들어서
 //    createMember() 함수를 정의하고
 //    Rest Client 툴로 데이터를 확인하세요
 }
+
 
 
 

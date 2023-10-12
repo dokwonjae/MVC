@@ -18,7 +18,7 @@
 <div class="container">
     <h3>전달 받은 객체는 ${list} 입니다.</h3>
 
-    <%--    todo: 테이블 형태로 화면 출력 --%>
+<%--    todo: 테이블 형태로 화면 출력 --%>
     <table class="table">
         <thead>
         <tr>
@@ -34,7 +34,7 @@
         <c:forEach var="data" items="${list}">
             <tr>
                 <td>
-                    <a href="/exam06/member/edition/${data.eno}">${data.eno}</a>
+                     <a href="/exam06/member/edition/${data.eno}">${data.eno}</a>
                 </td>
                 <td>${data.ename}</td>
                 <td>${data.job}</td>
@@ -46,6 +46,7 @@
 
         </tbody>
     </table>
+
     <%-- todo: Add 버튼 추가 --%>
     <div class="text-center">
         <a href="/exam06/member/addition" class="btn btn-primary">Add</a>
@@ -62,6 +63,7 @@
 
 </body>
 </html>
+
 
 
 

@@ -1,6 +1,5 @@
 package com.example.modelexam.controller.exam10;
 
-
 import com.example.modelexam.model.Dept;
 import com.example.modelexam.model.Member;
 import com.example.modelexam.service.exam10.Member10Service;
@@ -57,7 +56,7 @@ public class Member10Controller {
         }
     }
 
-    //    todo: 상세조회
+//    todo: 상세조회
     @GetMapping("/member/{eno}")
     public ResponseEntity<Object> getMemberId(
             @PathVariable long eno
@@ -78,12 +77,11 @@ public class Member10Controller {
         }
     }
 
-    /**
-     * 저장 함수
-     */
+//  todo: 저장 함수
     @PostMapping("/member")
-    public ResponseEntity<Object> createmember(
-            @RequestBody Member member) {
+    public ResponseEntity<Object> createMember(
+            @RequestBody Member member
+    ){
         try {
             List<Member> list = memberService.save(member);
             return new ResponseEntity<>(list, HttpStatus.CREATED);
@@ -94,14 +92,12 @@ public class Member10Controller {
         }
     }
 
-    /**
-     * 수정 함수
-     */
+//  todo: 수정 함수
     @PutMapping("/member/edit/{eno}")
     public ResponseEntity<Object> updateMember(
             @PathVariable int eno,
             @RequestBody Member member
-    ){
+    ) {
         try {
             List<Member> list = memberService.save(member);
             return new ResponseEntity<>(list, HttpStatus.CREATED);

@@ -28,7 +28,7 @@ import java.util.List;
 @RequestMapping("/exam03")
 public class Member03Controller {
 
-    //   todo: 서비스 객체 가져오기
+//   todo: 서비스 객체 가져오기
     @Autowired
     Member03Service memberService;
 
@@ -54,7 +54,7 @@ public class Member03Controller {
         return "exam03/member/member_id.jsp";
     }
 
-    //  todo: @ResponseBody : 함수의 리턴값을 json 데이터로 변경하는 어노테이션
+//  todo: @ResponseBody : 함수의 리턴값을 json 데이터로 변경하는 어노테이션
     @PostMapping("/member")
     @ResponseBody
     public List<Member> createMember(

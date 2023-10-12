@@ -17,7 +17,7 @@ import java.util.List;
  * fileName : Dept07Controller
  * author : GGG
  * date : 2023-10-11
- * description :
+ * description : @RestController + react 연동(vue 등)
  * 요약 :
  * <p>
  * ===========================================================
@@ -29,6 +29,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/exam07")
 public class Dept07Controller {
+
+//  todo: 객체 가져오기
     @Autowired
     Dept07Service deptService;
 
@@ -40,7 +42,7 @@ public class Dept07Controller {
         try {
             List<Dept> list = deptService.findAll();
             if(list.isEmpty() == false) {
-//             todo: 조회 성공
+//              todo: 조회 성공
                 return new ResponseEntity<>(list, HttpStatus.OK);
             } else {
 //              todo: 데이터 없음

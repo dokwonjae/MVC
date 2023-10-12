@@ -24,7 +24,7 @@ import java.util.Optional;
 @Service
 public class Member10Service {
 
-    //    todo : db 접근 함수들이 있는 객체 : memberDao
+//    todo : db 접근 함수들이 있는 객체 : memberDao
     @Autowired
     MemberDao memberDao;
 

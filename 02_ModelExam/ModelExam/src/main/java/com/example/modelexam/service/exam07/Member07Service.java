@@ -23,7 +23,7 @@ import java.util.List;
 @Service
 public class Member07Service {
 
-    //    todo : db 접근 함수들이 있는 객체 : memberDao
+//    todo : db 접근 함수들이 있는 객체 : memberDao
     @Autowired
     MemberDao memberDao;
 
@@ -75,11 +75,14 @@ public class Member07Service {
         return list;
     }
 
+    /**
+     * 사원번호로 삭제하는 함수
+     * @param eno
+     * @return
+     */
     public boolean removeById(int eno) {
-//        삭제 함수 호출 : 리턴값 : (삭제된 건수)
-        int iCount = memberDao.deleteById(eno);
+        int iCount = memberDao.deleteById(eno); // db 삭제
 
         return (iCount > 0)? true : false;
     }
-
 }

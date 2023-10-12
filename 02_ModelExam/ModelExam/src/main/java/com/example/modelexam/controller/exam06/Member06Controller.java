@@ -29,7 +29,7 @@ import java.util.List;
 @RequestMapping("/exam06")
 public class Member06Controller {
 
-    //   todo: 서비스 객체 가져오기
+//   todo: 서비스 객체 가져오기
     @Autowired
     Member06Service memberService;
 
@@ -55,13 +55,13 @@ public class Member06Controller {
         return "exam06/member/member_id.jsp";
     }
 
-    //  todo: 새로운 회원 추가 페이지 이동 함수
+//  todo: 새로운 회원 추가 페이지 이동 함수
     @GetMapping("/member/addition")
     public String addMember() {
         return "exam06/member/add_member.jsp";
     }
 
-    //  todo: db 저장 함수
+//  todo: db 저장 함수
     @PostMapping("/member/add")
     public RedirectView createMember(
             @ModelAttribute Member member
@@ -71,7 +71,7 @@ public class Member06Controller {
         return new RedirectView("/exam06/member");
     }
 
-    //  todo: 회원 수정 페이지 열기 함수 : 상세조회 필요
+//  todo: 회원 수정 페이지 열기 함수 : 상세조회 필요
     @GetMapping("/member/edition/{eno}")
     public String editMember(@PathVariable long eno, Model model) {
         Member member = memberService.findById(eno); // 상세조회
@@ -80,7 +80,7 @@ public class Member06Controller {
         return "exam06/member/update_member.jsp";
     }
 
-    //  todo: db 수정 저장 함수 : 수정 후 전체조회페이지로 강제 이동(리다이렉트)
+//  todo: db 수정 저장 함수 : 수정 후 전체조회페이지로 강제 이동(리다이렉트)
     @PutMapping("/member/edit/{eno}")
     public RedirectView updateMember(@PathVariable int eno,
                                      @ModelAttribute Member member) {
@@ -90,14 +90,15 @@ public class Member06Controller {
         return new RedirectView("/exam06/member");
     }
 
-    //  todo: 삭제 함수 : 삭제 후 전체 조회로 리다이렉트(강제 이동)
+//  todo: 삭제 함수 : 전체 조회 페이지로 강제 이동
     @DeleteMapping("/member/delete/{eno}")
     public RedirectView deleteMember(@PathVariable int eno) {
-        memberService.removeById(eno); // db 삭제
+        memberService.removeById(eno); // db 삭제 함수 호출
 
-        return new RedirectView("/exam06/member"); // 전체조회 강제이동
+        return new RedirectView("/exam06/member"); // 전체 조회 사이트
     }
 }
+
 
 
 

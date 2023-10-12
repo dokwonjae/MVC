@@ -24,12 +24,12 @@
         </div>
         <%--       todo: 직위 입력양식--%>
         <div class="mb-3">
-            <label for="job" class="form-label">직위</label>
+            <label for="job" class="form-label">부서 위치</label>
             <input type="text" class="form-control" id="job" required name="job">
         </div>
         <%--       todo: 매니저 입력양식--%>
         <div class="mb-3">
-            <label for="manager" class="form-label">manager</label>
+            <label for="manager" class="form-label">매니저</label>
             <input type="text" class="form-control" id="manager" required name="manager">
         </div>
         <div class="mb-3">

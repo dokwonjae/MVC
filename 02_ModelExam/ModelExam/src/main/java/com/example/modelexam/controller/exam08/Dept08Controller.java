@@ -32,7 +32,7 @@ import java.util.Optional;
 @RequestMapping("/exam08")
 public class Dept08Controller {
 
-    //  todo: 객체 가져오기
+//  todo: 객체 가져오기
     @Autowired
     Dept08Service deptService;
 
@@ -79,4 +79,11 @@ public class Dept08Controller {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+//  todo: 연습문제 2)부서클래스를 참고하여
+//    Member08Service 클래스를 만들고 findById() 함수안에 Optional 사용으로
+//    코드를 업그레이드 하세요
+//    Member08Controller 클래스를 만들어서 getMemberId() 함수를 정의하세요
+//    단, 예외처리와 ResponseEntity 를 사용해 데이터와 메세지를 같이 전송하세요
+//    url: /member/{eno}
 }

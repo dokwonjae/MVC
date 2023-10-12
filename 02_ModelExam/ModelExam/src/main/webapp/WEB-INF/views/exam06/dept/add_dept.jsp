@@ -14,17 +14,17 @@
 <jsp:include page="../../common/header.jsp" />
 
 <div class="container">
-    <%--    todo: insert : post 방식으로 벡엔드 연결 --%>
-    <%--        form action="이동할url" method="get|post|delete|put" --%>
-    <%--         get(select), post(insert), delete(delete), put(update) --%>
-    <%--        button type="submit" : 기본기능 - 해당 url 이동됨 --%>
-    <form action="/exam05/dept/add" method="post">
-        <%--        todo: 부서명 입력양식 --%>
+<%--    todo: insert : post 방식으로 벡엔드 연결 --%>
+<%--        form action="이동할url" method="get|post|delete|put" --%>
+<%--         get(select), post(insert), delete(delete), put(update) --%>
+<%--        button type="submit" : 기본기능 - 해당 url 이동됨 --%>
+    <form action="/exam06/dept/add" method="post">
+<%--        todo: 부서명 입력양식 --%>
         <div class="mb-3">
             <label for="dname" class="form-label">부서 이름</label>
             <input type="text" class="form-control" id="dname" required name="dname">
         </div>
-        <%--       todo: 부서위치 입력양식--%>
+<%--       todo: 부서위치 입력양식--%>
         <div class="mb-3">
             <label for="loc" class="form-label">부서 위치</label>
             <input type="text" class="form-control" id="loc" required name="loc">
@@ -37,6 +37,7 @@
 <jsp:include page="../../common/footer.jsp" />
 </body>
 </html>
+
 
 
 

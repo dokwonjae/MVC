@@ -59,7 +59,7 @@ public class Member08Controller {
         }
     }
 
-    //    todo: 상세조회
+//    todo: 상세조회
     @GetMapping("/member/{eno}")
     public ResponseEntity<Object> getMemberId(
             @PathVariable long eno

@@ -37,7 +37,7 @@ import java.util.List;
 @RequestMapping("/exam04")
 public class Dept04Controller {
 
-    //    todo: MVC 의 Model(Service클래스) 객체 가져오기
+//    todo: MVC 의 Model(Service클래스) 객체 가져오기
     @Autowired
     Dept04Service deptService;
 
@@ -57,20 +57,20 @@ public class Dept04Controller {
     @GetMapping("/dept/{dno}")
     public String getDeptId(@PathVariable long dno,
                             Model model
-    ) {
+                            ) {
 //      todo: 서비스 상세조회 호출
         Dept dept = deptService.findById(dno);
         model.addAttribute("dept", dept);
         return "exam04/dept/dept_id.jsp";
     }
 
-    //  todo: 부서 추가 페이지 열기 함수
+//  todo: 부서 추가 페이지 열기 함수
     @GetMapping("/dept/addition")
     public String addDept() {
         return "exam04/dept/add_dept.jsp";
     }
 
-    //  todo: 저장 버튼 클릭시 db 저장하기 함수
+//  todo: 저장 버튼 클릭시 db 저장하기 함수
     @PostMapping("/dept/add")
     public RedirectView createDept(@ModelAttribute Dept dept) {
 //      todo: 서비스 저장함수 호출
@@ -81,7 +81,19 @@ public class Dept04Controller {
     }
 
 
+//  todo: 연습 4)
+//    Member04Service 클래스를 만들고 save() 함수를 정의한다.
+//    Member04Controller 클래스를 만들어서 addMember(),
+//    createMember() 함수를 정의
+//    addMember()
+//    - url : /member/addition
+//    - jsp : exam04/member/add_member.jsp
+//    createMember()
+//    - url : /member/add
+//    - redirect url : /exam04/member
+
 }
+
 
 
 

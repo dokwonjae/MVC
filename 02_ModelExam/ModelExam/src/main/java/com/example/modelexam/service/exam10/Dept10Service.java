@@ -50,6 +50,7 @@ public class Dept10Service {
 
     /**
      * id(기본키)로 조회 : 상세조회(1건조회)
+     * 수정 : null 방지 기능 추가
      * @param dno
      * @return
      */

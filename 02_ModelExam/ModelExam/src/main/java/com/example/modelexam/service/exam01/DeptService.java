@@ -52,10 +52,9 @@ public class DeptService {
      * @param dno
      * @return
      */
-
     public Dept findById(long dno) {
 //       todo: db 상세조회(1건조회) 함수 호출
-//         id(기본키)로 조회
+//          id(기본키)로 조회
         Dept dept = deptDao.selectById(dno);
 
         return dept;

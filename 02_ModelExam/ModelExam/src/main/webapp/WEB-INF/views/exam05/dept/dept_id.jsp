@@ -28,13 +28,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>${dept.dno}</td>
-            <td>${dept.dname}</td>
-            <td>${dept.loc}</td>
-            <td>${dept.insertTime}</td>
-            <td>${dept.updateTime}</td>
-        </tr>
+            <tr>
+                <td>${dept.dno}</td>
+                <td>${dept.dname}</td>
+                <td>${dept.loc}</td>
+                <td>${dept.insertTime}</td>
+                <td>${dept.updateTime}</td>
+            </tr>
 
         </tbody>
     </table>
@@ -50,6 +50,7 @@
 <jsp:include page="../../common/footer.jsp" />
 </body>
 </html>
+
 
 
 

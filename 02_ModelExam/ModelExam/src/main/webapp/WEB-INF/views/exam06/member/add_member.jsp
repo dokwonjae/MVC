@@ -11,24 +11,23 @@
     <title>Document</title>
 </head>
 <body>
+<%-- header 시작 --%>
 <jsp:include page="../../common/header.jsp"/>
 
+<%-- 본문 --%>
 <div class="container">
-    <%--    todo: insert : post 방식으로 벡엔드 연결 --%>
-    <%--        form action="이동할url" method="get|post|delete|put" --%>
-    <%--         get(select), post(insert), delete(delete), put(update) --%>
-    <%--        button type="submit" : 기본기능 - 해당 url 이동됨 --%>
     <form action="/exam06/member/add" method="post">
-        <%--        todo: 부서명 입력양식 --%>
+        <%--        todo: 사원명 입력양식 --%>
         <div class="mb-3">
-            <label for="ename" class="form-label">사원명</label>
+            <label for="ename" class="form-label">사원 이름</label>
             <input type="text" class="form-control" id="ename" required name="ename">
         </div>
-        <%--       todo: 부서위치 입력양식--%>
+        <%--       todo: 직위 입력양식--%>
         <div class="mb-3">
-            <label for="job" class="form-label">직위</label>
+            <label for="job" class="form-label">부서 위치</label>
             <input type="text" class="form-control" id="job" required name="job">
         </div>
+        <%--       todo: 매니저 입력양식--%>
         <div class="mb-3">
             <label for="manager" class="form-label">매니저</label>
             <input type="text" class="form-control" id="manager" required name="manager">
@@ -41,10 +40,3 @@
 <jsp:include page="../../common/footer.jsp"/>
 </body>
 </html>
-
-
-
-
-
-
-

@@ -18,7 +18,7 @@
 <div class="container">
     <h3>전달 받은 객체는 ${list} 입니다.</h3>
 
-    <%--    todo: 테이블 형태로 화면 출력 --%>
+<%--    todo: 테이블 형태로 화면 출력 --%>
     <table class="table">
         <thead>
         <tr>
@@ -57,6 +57,7 @@
 
 </body>
 </html>
+
 
 
 
