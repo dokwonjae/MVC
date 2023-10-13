@@ -19,7 +19,7 @@
     <%--     form 안에 input 태그의 value 값들이 -> springboot 함수로 전달됨 --%>
     <form class="row g-3 justify-content-center" action="/exam01/emp" method="get">
         <div class="col-auto">
-            <%--            todo: 부서명 라벨 --%>
+            <%--            todo: 사원명 라벨 --%>
             <label for="ename" class="visually-hidden">Ename</label>
             <%--            todo: 검색창--%>
             <input type="text" class="form-control" id="ename" placeholder="ename" name="ename">
@@ -27,6 +27,7 @@
             <input type="hidden" class="form-control" id="page" name="page" value="0">
             <input type="hidden" class="form-control" id="size" name="size" value="3">
         </div>
+        <%--     todo: 서브밋 버튼 --%>
         <div class="col-auto">
             <button type="submit" class="btn btn-primary mb-3">Search</button>
         </div>
@@ -37,21 +38,22 @@
     <table class="table">
         <thead class="thead-dark">
         <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">위치</th>
+            <th scope="col">사원번호</th>
+            <th scope="col">사원명</th>
+            <th scope="col">직위</th>
+            <th scope="col">매니저</th>
+            <th scope="col">입사일</th>
+            <th scope="col">급여</th>
+            <th scope="col">상여금</th>
+            <th scope="col">부서번호</th>
             <th scope="col">등록일자</th>
-            <th scope="col">수정일자</th>
-            <th scope="col">수정일자</th>
-            <th scope="col">수정일자</th>
-            <th scope="col">수정일자</th>
             <th scope="col">수정일자</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach var="data" items="${emp}">
             <tr>
-                <td>${data.eno}</td>
+                <td><a href="/exam01/emp/edition/${data.eno}">${data.eno}</a></td>
                 <td>${data.ename}</td>
                 <td>${data.job}</td>
                 <td>${data.manager}</td>
@@ -71,11 +73,10 @@
     <%--    todo: 페이지 번호 시작--%>
     <div class="d-flex justify-content-center">
         <ul class="pagination">
-<%--            todo: 첫페이지 번호 &ndash;%&gt;--%>
-<%--             startPage : 1부터 시작--%>
-<%--             currentPage : 0부터 시작--%>
+            <%--                todo: 첫페이지 번호 --%>
+            <%--                 startPage : 1부터 시작 --%>
+            <%--                 currentPage : 0부터 시작--%>
             <li class="page-item ${(startPage==1)? 'disabled': ''}">
-<%--                todo: 실제 페이지 번호들--%>
                 <a class="page-link" href="/exam01/emp?page=${startPage-2}&size=${3}">Previous</a>
             </li>
             <%--                todo: 실제 페이지 번호들 --%>
@@ -94,6 +95,11 @@
         </ul>
     </div>
     <%--    todo: 페이지 번호 끝--%>
+
+        <%--    todo: Add 버튼 추가--%>
+        <div class="text-center">
+            <a href="/exam01/emp/addition" class="btn btn-primary center">Add</a>
+        </div>
 </div>
 
 <script>
@@ -103,12 +109,12 @@
     let obj4 = "${totalPages}";
     let obj5 = "${startPage}";
     let obj6 = "${endPage}";
-    console.log("obj", obj);
-    console.log("obj2", obj2);
-    console.log("obj3", obj3);
-    console.log("obj4", obj4);
-    console.log("obj5", obj5);
-    console.log("obj6", obj6);
+    console.log("emp", obj);
+    console.log("currentPage", obj2);
+    console.log("totalItems", obj3);
+    console.log("totalPages", obj4);
+    console.log("startPage", obj5);
+    console.log("endPage", obj6);
 </script>
 
 <%--footer--%>

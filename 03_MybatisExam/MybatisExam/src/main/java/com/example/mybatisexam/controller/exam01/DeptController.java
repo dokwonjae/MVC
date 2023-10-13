@@ -5,12 +5,14 @@ import com.example.mybatisexam.model.common.PageRes;
 import com.example.mybatisexam.model.vo.Dept;
 import com.example.mybatisexam.service.exam01.DeptService;
 import lombok.extern.slf4j.Slf4j;
+import oracle.ucp.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
+
+import java.util.Optional;
 
 /**
  * packageName : com.example.mybatisexam.controller.exam01
@@ -61,4 +63,68 @@ public class DeptController {
 
         return "exam01/dept/dept_all.jsp";
     }
+
+    /** 상세조회 */
+    @GetMapping("/dept/{dno}")
+    public String getDeptId(@PathVariable int dno,
+                            Model model
+    ) {
+//      서비스 상세조회 함수 호출
+        Optional<Dept> optionalDept = deptService.findById(dno);
+        model.addAttribute("dept", optionalDept.get());
+
+        return "exam01/dept/dept_id.jsp";
+    }
+
+    /** 저장함수 : 저장 페이지로 이동 */
+    @GetMapping("/dept/addition")
+    public String addDept(){
+        return "exam01/dept/add_dept.jsp";
+    }
+
+    /** 저장함수 : db 저장 */
+    @PostMapping("/dept/add")
+    public RedirectView createDept(
+            @ModelAttribute Dept dept
+    ){
+        deptService.save(dept); // db 저장
+
+//      전체 조회 페이지로 강제 이동
+        return new RedirectView("/exam01/dept");
+    }
+
+    /** 수정함수 : 수정 페이지로 이동 + 상세조회(1건조회) */
+    @GetMapping("/dept/edition/{dno}")
+    public String editDept(@PathVariable int dno,
+                           Model model
+    ) {
+//      서비스 상세조회 함수 호출
+        Optional<Dept> optionalDept = deptService.findById(dno);
+//      jsp 전달
+        model.addAttribute("dept", optionalDept.get());
+        return "exam01/dept/update_dept.jsp";
+    }
+
+
+    /** 수정함수 : db 수정 저장 */
+    @PutMapping("/dept/edit/{dno}")
+    public RedirectView updateDept(@PathVariable int dno,
+                                   @ModelAttribute Dept dept
+    ) {
+        log.debug("---------------start-------------------------------");
+        deptService.save(dept); // db 수정 저장
+        log.debug("---------------end-------------------------------");
+
+//      전체 조회 페이지로 강제 이동
+        return new RedirectView("/exam01/dept");
+    }
+
+    /** 삭제함수 */
+    @DeleteMapping("/dept/delete/{dno}")
+    public RedirectView deleteDept(@PathVariable int dno) {
+        deptService.removeById(dno); // db 삭제
+
+        return new RedirectView("/exam01/dept");
+    }
+
 }

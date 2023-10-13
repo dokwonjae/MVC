@@ -47,7 +47,7 @@
         <tbody>
         <c:forEach var="data" items="${dept}">
             <tr>
-                <td>${data.dno}</td>
+                <td><a href="/exam01/dept/edition/${data.dno}">${data.dno}</a></td>
                 <td>${data.dname}</td>
                 <td>${data.loc}</td>
                 <td>${data.insertTime}</td>
@@ -62,11 +62,10 @@
     <%--    todo: 페이지 번호 시작--%>
     <div class="d-flex justify-content-center">
         <ul class="pagination">
-<%--            todo: 첫페이지 번호 &ndash;%&gt;--%>
-<%--             startPage : 1부터 시작--%>
-<%--             currentPage : 0부터 시작--%>
+            <%--                todo: 첫페이지 번호 --%>
+            <%--                 startPage : 1부터 시작 --%>
+            <%--                 currentPage : 0부터 시작--%>
             <li class="page-item ${(startPage==1)? 'disabled': ''}">
-<%--                todo: 실제 페이지 번호들--%>
                 <a class="page-link" href="/exam01/dept?page=${startPage-2}&size=${3}">Previous</a>
             </li>
             <%--                todo: 실제 페이지 번호들 --%>
@@ -85,6 +84,11 @@
         </ul>
     </div>
     <%--    todo: 페이지 번호 끝--%>
+
+    <%--    todo: Add 버튼 추가 --%>
+    <div class="text-center">
+        <a href="/exam01/dept/addition" class="btn btn-primary center">Add</a>
+    </div>
 </div>
 
 <script>
@@ -95,11 +99,11 @@
     let obj5 = "${startPage}";
     let obj6 = "${endPage}";
     console.log("obj", obj);
-    console.log("obj2", obj2);
-    console.log("obj3", obj3);
-    console.log("obj4", obj4);
-    console.log("obj5", obj5);
-    console.log("obj6", obj6);
+    console.log("currentPage", obj2);
+    console.log("totalItems", obj3);
+    console.log("totalPages", obj4);
+    console.log("startPage", obj5);
+    console.log("endPage", obj6);
 </script>
 
 <%--footer--%>

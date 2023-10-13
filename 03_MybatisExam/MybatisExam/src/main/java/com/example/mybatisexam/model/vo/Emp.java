@@ -30,5 +30,4 @@ public class Emp extends BaseTimeEntity {
     private Integer salary ;
     private Integer commission ;
     private Integer dno ;
-
 }

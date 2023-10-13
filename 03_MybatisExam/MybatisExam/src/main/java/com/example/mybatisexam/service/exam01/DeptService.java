@@ -4,10 +4,12 @@ import com.example.mybatisexam.dao.DeptDao;
 import com.example.mybatisexam.model.common.PageReq;
 import com.example.mybatisexam.model.common.PageRes;
 import com.example.mybatisexam.model.vo.Dept;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * packageName : com.example.mybatisexam.service.exam01
@@ -22,6 +24,7 @@ import java.util.List;
  * —————————————————————————————
  * 2023-10-12         GGG          최초 생성
  */
+@Slf4j
 @Service
 public class DeptService {
 
@@ -47,4 +50,47 @@ public class DeptService {
 
         return pageRes;
     }
+
+    /** 상세조회 */
+    public Optional<Dept> findById(int dno) {
+//        db 상세조회 호출
+        Optional<Dept> optionalDept = deptDao.findById(dno);
+
+        return optionalDept;
+    }
+
+
+    /** 저장함수 : dml ( 트랜잭션을 동반: 테이블에 값을 수정/삭제/넣는 행위 ) */
+    public int save(Dept dept) {
+        int queryResult = -1; // 저장된 건수를 위한 변수
+
+        try {
+//          todo: 기본키(dno) 없으면 insert
+            if(dept.getDno() == null) {
+                queryResult = deptDao.insert(dept);
+            } else {
+//          todo: 기본키(dno) 있으면 update
+                queryResult = deptDao.update(dept);
+            }
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+        }
+        return queryResult;
+    }
+
+    /** 삭제함수 dml 함수 : 에러처리 */
+    public boolean removeById(int dno) {
+        try {
+            if(deptDao.existById(dno) > 0) {
+                deptDao.deleteById(dno);
+                return true;
+            }
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+        }
+        return false;
+    }
 }
+
+
+
