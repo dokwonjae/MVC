@@ -90,4 +90,26 @@ public class EmpService {
         return false;
     }
 
+    /** todo: dynamic sql */
+    public PageRes<Emp> findByDynamicContaining(
+            String ename,
+            String job,
+            int manager, String hiredate, int salary, int commission, String dno, PageReq pageReq
+    ) {
+        //        todo: dynamic 조회 (like 됨)
+        List<Emp> list = empDao.findByDynamicContaining(ename, job, manager, hiredate, salary, commission, dno, pageReq);
+
+//        todo: 페이징 처리 로직
+//         1) 총 테이블 개수 :
+        long totalCount = empDao.countByDynamic(ename, job, manager, hiredate, salary, commission, dno);
+//        todo: 생성자 페이지 결과 객체(PageRes)
+        PageRes pageRes = new PageRes(
+                list,              // 검색 결과(부서) 배열
+                pageReq.getPage(), // 현재 페이지 번호
+                totalCount,        // 총 테이블 건수
+                pageReq.getSize()  // 1페이지당 개수
+        );
+
+        return pageRes;
+    }
 }

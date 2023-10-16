@@ -2,47 +2,46 @@ package com.example.mybatisexam.controller.exam02;
 
 import com.example.mybatisexam.model.common.PageReq;
 import com.example.mybatisexam.model.common.PageRes;
-import com.example.mybatisexam.model.vo.Dept;
-import com.example.mybatisexam.service.exam01.DeptService;
+import com.example.mybatisexam.model.vo.Emp;
+import com.example.mybatisexam.service.exam01.EmpService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 /**
  * packageName : com.example.mybatisexam.controller.exam02
- * fileName : Dept02Controller
+ * fileName : Emp02Controller
  * author : GGG
- * date : 2023-10-13
- * description : 부서 컨트롤러 : @RestController ( react 용 )
+ * date : 2023-10-16
+ * description : 사원 컨트롤러 : @RestController (react 용)
  * 요약 :
  * <p>
  * ===========================================================
  * DATE            AUTHOR             NOTE
  * —————————————————————————————
- * 2023-10-13         GGG          최초 생성
+ * 2023-10-16         GGG          최초 생성
  */
 @Slf4j
 @RestController
 @RequestMapping("/exam02")
-public class Dept02Controller {
-
+public class Emp02Controller {
     @Autowired
-    DeptService deptService;
+    EmpService empService; // todo: DI
 
     /**
-     * 전체조회 : 부서명 like 검색
+     * 전체 조회
      */
-//  todo: @RequestParam - url?변수=값&변수2=값2 (쿼리스트링 방식)
-    @GetMapping("/dept")
-    public ResponseEntity<Object> getDeptAll(
-            @RequestParam(defaultValue = "") String dname
+    @GetMapping("/emp")
+    public ResponseEntity<Object> getEmpAll(
+            @RequestParam(defaultValue = "") String ename
             , @RequestParam(defaultValue = "0") int page
             , @RequestParam(defaultValue = "3") int size
     ) {
@@ -50,14 +49,14 @@ public class Dept02Controller {
             PageReq pageReq = new PageReq(page, size);
 
 //      todo: 전체 조회 함수 호출
-            PageRes<Dept> pageRes
-                    = deptService.findByDnameContaining(dname, pageReq);
+            PageRes<Emp> pageRes
+                    = empService.findByEnameContaining(ename, pageReq);
 
 //      todo: jsp 정보전달( 부서배열, 페이징정보 )
 //        자료구조 (키, 값) : Map
             Map<String, Object> response = new HashMap<>();
 
-            response.put("dept", pageRes.getContent()); // 부서배열
+            response.put("emp", pageRes.getContent()); // 사원배열
             response.put("currentPage", pageRes.getNumber()); // 현재 페이지 번호
             response.put("totalItems", pageRes.getTotalElements()); // 전체 테이블 건수
             response.put("totalPages", pageRes.getTotalPages()); // 전체 페이지 개수
@@ -76,18 +75,18 @@ public class Dept02Controller {
     }
 
     /**
-     * 상세 조회
+     * 상세조회
      */
-    @GetMapping("/dept/{dno}")
-    public ResponseEntity<Object> getDeptId(@PathVariable int dno) {
+    @GetMapping("/emp/{eno}")
+    public ResponseEntity<Object> getEmpId(@PathVariable int eno) {
         try {
 //                todo: 상세조회 함수 호출
-            Optional<Dept> optionalDept
-                    = deptService.findById(dno);
+            Optional<Emp> optionalEmp
+                    = empService.findById(eno);
 
-            if(optionalDept.isEmpty() == false) {
+            if(optionalEmp.isEmpty() == false) {
 //                todo: 조회 성공
-                return new ResponseEntity<>(optionalDept.get(), HttpStatus.OK);
+                return new ResponseEntity<>(optionalEmp.get(), HttpStatus.OK);
             } else {
 //                todo: 0건 조회 (실패)
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -101,12 +100,12 @@ public class Dept02Controller {
     /**
      * 저장함수
      */
-    @PostMapping("/dept")
-    public ResponseEntity<Object> createDept(
-            @RequestBody Dept dept
+    @PostMapping("/emp")
+    public ResponseEntity<Object> createEmp(
+            @RequestBody Emp emp
     ) {
         try{
-            int count = deptService.save(dept);
+            int count = empService.save(emp);
 
             return new ResponseEntity<>(count, HttpStatus.OK);
         } catch (Exception e) {
@@ -118,14 +117,14 @@ public class Dept02Controller {
     /**
      * 수정함수
      */
-    @PutMapping("/dept/{dno}")
-    public ResponseEntity<Object> updateDept(
-            @PathVariable int dno,
-            @RequestBody Dept dept
+    @PutMapping("/emp/{eno}")
+    public ResponseEntity<Object> updateEmp(
+            @PathVariable int eno,
+            @RequestBody Emp emp
     ) {
         try{
 //            // todo : 수정함수 (기본키가 있으면 )
-            int count = deptService.save(dept);
+            int count = empService.save(emp);
 
             return new ResponseEntity<>(count, HttpStatus.OK);
         } catch (Exception e) {
@@ -133,17 +132,16 @@ public class Dept02Controller {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
     /**
      * 삭제함수
      */
-    @DeleteMapping("/dept/deletion/{dno}")
-    public ResponseEntity<Object> deleteDept(
-            @PathVariable int dno
+    @DeleteMapping("/emp/deletion/{eno}")
+    public ResponseEntity<Object> deleteEmp(
+            @PathVariable int eno
     ) {
         try {
 //                todo: 삭제 함수 호출
-            boolean bSuccess = deptService.removeById(dno);
+            boolean bSuccess = empService.removeById(eno);
 
             if(bSuccess == true) {
 //                todo: 삭제 성공
@@ -159,10 +157,15 @@ public class Dept02Controller {
     }
 
     /** todo: dynamic sql */
-    @GetMapping("/dept/dynamic")
-    public ResponseEntity<Object> getDeptDynamic(
-            @RequestParam(defaultValue = "") String dname,
-            @RequestParam(defaultValue = "") String loc,
+    @GetMapping("/emp/dynamic")
+    public ResponseEntity<Object> getEmpDynamic(
+            @RequestParam(defaultValue = "") String ename,
+            @RequestParam(defaultValue = "") String job,
+            @RequestParam(defaultValue = "0") int manager,
+            @RequestParam(defaultValue = "") String hiredate,
+            @RequestParam(defaultValue = "0") int salary,
+            @RequestParam(defaultValue = "0") int commission,
+            @RequestParam(defaultValue = "") String dno,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "3") int size
     ){
@@ -170,8 +173,8 @@ public class Dept02Controller {
             PageReq pageReq = new PageReq(page, size);
 
 //      todo: dynamic 조회 함수 호출
-            PageRes<Dept> pageRes
-                    = deptService.findByDynamicContaining(dname, loc, pageReq);
+            PageRes<Emp> pageRes
+                    = empService.findByDynamicContaining(ename, job, manager, hiredate, salary, commission, dno, pageReq);
 
 //      todo: 정보전달( 부서배열, 페이징정보 )
 //        자료구조 (키, 값) : Map
@@ -194,9 +197,7 @@ public class Dept02Controller {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 }
-
 
 
 

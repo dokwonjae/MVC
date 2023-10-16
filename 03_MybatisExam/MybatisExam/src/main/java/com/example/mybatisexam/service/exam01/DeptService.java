@@ -90,7 +90,34 @@ public class DeptService {
         }
         return false;
     }
+
+    /** todo: dynamic sql */
+    public PageRes<Dept> findByDynamicContaining(
+            String dname, String loc, PageReq pageReq
+    ) {
+        //        todo: dynamic 조회 (like 됨)
+        List<Dept> list = deptDao.findByDynamicContaining(dname, loc, pageReq);
+
+//        todo: 페이징 처리 로직
+//         1) 총 테이블 개수 :
+        long totalCount = deptDao.countByDynamic(dname, loc);
+//        todo: 생성자 페이지 결과 객체(PageRes)
+        PageRes pageRes = new PageRes(
+                list,              // 검색 결과(부서) 배열
+                pageReq.getPage(), // 현재 페이지 번호
+                totalCount,        // 총 테이블 건수
+                pageReq.getSize()  // 1페이지당 개수
+        );
+
+        return pageRes;
+    }
 }
+
+
+
+
+
+
 
 
 

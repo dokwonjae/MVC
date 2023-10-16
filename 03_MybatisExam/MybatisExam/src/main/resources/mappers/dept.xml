@@ -46,8 +46,8 @@
         UPDATE TB_DEPT
         SET
             DNAME = #{dname}
-          , LOC   = #{loc}
-          , UPDATE_TIME = #{updateTime}
+          ,LOC   = #{loc}
+          ,UPDATE_TIME = #{updateTime}
         WHERE DNO = #{dno}
     </update>
 
@@ -60,5 +60,36 @@
         SELECT COUNT(dno)
         FROM TB_DEPT
         WHERE DNO = #{dno}
+    </select>
+
+    <!--  todo: Dynamic func # 1  -->
+    <select id="findByDynamicContaining" parameterType="PageReq"
+            resultType="Dept">
+        SELECT DNO
+        , DNAME
+        , LOC
+        <include refid="common.selectCol"></include>
+        FROM TB_DEPT
+        WHERE 1=1
+        <if test="dname != ''">
+            AND   DNAME LIKE '%' || #{dname} || '%'
+        </if>
+        <if test="loc != ''">
+            AND   LOC LIKE '%' || #{loc} || '%'
+        </if>
+        OFFSET #{pageReq.page} * #{pageReq.size} ROWS FETCH FIRST #{pageReq.size} ROWS ONLY
+    </select>
+
+    <!--  todo: Dynamic func # 2  -->
+    <select id="countByDynamic" parameterType="String" resultType="long">
+        SELECT COUNT(dno)
+        FROM TB_DEPT
+        WHERE 1=1
+        <if test="dname != ''">
+            AND   DNAME LIKE '%' || #{dname} || '%'
+        </if>
+        <if test="loc != ''">
+            AND   LOC LIKE '%' || #{loc} || '%'
+        </if>
     </select>
 </mapper>

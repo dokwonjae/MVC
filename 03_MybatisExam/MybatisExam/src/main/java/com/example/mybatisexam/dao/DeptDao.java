@@ -57,6 +57,16 @@ public interface DeptDao {
 
     /** 기본키(dno) 가 있는지 확인하는 조회함수 */
     long existById(int dno);
+
+    /** todo: 다이나믹 SQL 작성 예제 */
+    public List<Dept> findByDynamicContaining(
+            @Param("dname") String dname,
+            @Param("loc") String loc,
+            PageReq pageReq);
+
+    /** todo: 다이나믹 SQL 작성 전체 카운트 예제 */
+    long countByDynamic(String dname, @Param("loc") String loc);
+
 }
 
 
