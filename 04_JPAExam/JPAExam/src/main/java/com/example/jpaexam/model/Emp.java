@@ -53,21 +53,21 @@ public class Emp extends BaseTimeEntity {
             , generator = "SQ_EMP_GENERATOR"
     )
     @Column(columnDefinition = "NUMBER")
-    private Integer eno; // 부서번호(기본키) - 시퀀스 기능 부여
+    private Integer eno; // 사원번호(기본키) - 시퀀스 기능 부여
 
     @Column(columnDefinition = "VARCHAR2(255)")
-    private String ename; // 부서명
+    private String ename; // 사원명
 
     @Column(columnDefinition = "VARCHAR2(255)")
-    private String job;   // 부서위치
+    private String job;   // 직위
     @Column(columnDefinition = "VARCHAR2(255)")
-    private Integer manager;   // 부서위치
+    private Integer manager;   // 매니저
     @Column(columnDefinition = "VARCHAR2(255)")
-    private String hiredate;   // 부서위치
+    private String hiredate;   // 입사일
     @Column(columnDefinition = "VARCHAR2(255)")
-    private Integer salary;   // 부서위치
+    private Integer salary;   // 급여
     @Column(columnDefinition = "VARCHAR2(255)")
-    private Integer commission;   // 부서위치
+    private Integer commission;   // 상여금
     @Column(columnDefinition = "VARCHAR2(255)")
-    private Integer dno;   // 부서위치
+    private Integer dno;   // 부서번호
 }
