@@ -1,9 +1,13 @@
 package com.example.jpacustomexam.service;
 
+
+import com.example.jpacustomexam.dto.EmpGroupDto;
 import com.example.jpacustomexam.model.Dept;
 import com.example.jpacustomexam.model.Emp;
 import com.example.jpacustomexam.repository.EmpRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -109,6 +113,9 @@ public class EmpService {
         return list;
     }
 
+//    -------------------------------------------------
+//    @Query 예제
+//    -------------------------------------------------
     /** 전체조회 + ename like 검색 : @Query */
     public List<Emp> selectByEname(String ename) {
         List<Emp> list
@@ -116,4 +123,89 @@ public class EmpService {
 
         return list;
     }
+
+    /** 전체조회 + ename like 검색 : @Query */
+    public List<Emp> selectDesc() {
+        List<Emp> list
+                = empRepository.selectDesc();
+
+        return list;
+    }
+
+    /** 전체조회 + ename like 검색 : @Query */
+    public List<Emp> selectSalary(int salary) {
+        List<Emp> list
+                = empRepository.selectSalary(salary);
+
+        return list;
+    }
+
+    /** 전체조회 + ename like 검색 : @Query */
+    public List<Emp> selectHiredate(String first, String last) {
+        List<Emp> list
+                = empRepository.selectHiredate(first, last);
+
+        return list;
+    }
+
+    /** 전체조회 그룹 함수 검색(dto) : @Query */
+    public List<EmpGroupDto> selectGroupDnoJob() {
+        List<EmpGroupDto> list
+                = empRepository.selectGroupDnoJob();
+
+        return list;
+    }
+
+    /** 전체조회 그룹 함수 검색(dto) : @Query */
+    public List<EmpGroupDto> selectGroupDnoTrunc() {
+        List<EmpGroupDto> list
+                = empRepository.selectGroupDnoTrunc();
+
+        return list;
+    }
+
+    /** 연습 7) : @Query(dto)*/
+    public List<EmpGroupDto> selectGroupSumMax() {
+        List<EmpGroupDto> list
+                = empRepository.selectGroupSumMax();
+
+        return list;
+    }
+
+    /** 연습 8) : @Query(dto) */
+    public List<EmpGroupDto> selectGroupHiredate() {
+        List<EmpGroupDto> list
+                = empRepository.selectGroupHiredate();
+
+        return list;
+    }
+
+//    --------------------------------------------------
+//    페이지 예제
+//    --------------------------------------------------
+    public Page<Emp> findAllByEnameContaining(String ename, Pageable pageable) {
+        Page<Emp> page
+                = empRepository.findAllByEnameContaining(ename, pageable);
+
+        return page;
+    }
+
+    //    2) 기본 제공되는 전체 조회 함수 : 페이징처리 기능 추가
+    public Page<Emp> findAllPage(Pageable pageable) {
+        Page<Emp> page
+                = empRepository.findAll(pageable);
+
+        return page;
+    }
+//    --------------------------
+//    @Query : 페이징 처리
+//    --------------------------
+    //    2)  : 페이징처리 기능 추가
+    public Page<Emp> selectByEnamePage(String ename, Pageable pageable) {
+        Page<Emp> page
+                = empRepository.selectByEnamePage(ename, pageable);
+
+        return page;
+    }
+
 }

@@ -1,6 +1,10 @@
 package com.example.jpacustomexam.repository;
 
+import com.example.jpacustomexam.dto.DeptEmpDto;
+import com.example.jpacustomexam.dto.DeptGroupDto;
 import com.example.jpacustomexam.model.Dept;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -48,7 +52,101 @@ public interface DeptRepository extends JpaRepository<Dept, Integer> {
 //    @Query 예제 : 1) 오라클 쿼리 2) 객체 쿼리
 //    ---------------------------------------
 //  todo: 1) dname like 검색
-@Query(value = "SELECT TD.* FROM TB_DEPT TD WHERE TD.DNAME LIKE %:dname ", nativeQuery = true)
+@Query(value = "SELECT TD.* FROM TB_DEPT TD WHERE TD.DNAME LIKE '%' || :dname || '%'", nativeQuery = true)
 List<Dept> selectByDname(@Param("dname") String dname);
 
+// todo: 1-1) 위의 꺼 다르게 코딩 : 참고
+//@Query(value = "SELECT TD.* FROM TB_DEPT TD WHERE TD.DNAME LIKE '%' || :dname || '%'", nativeQuery = true)
+//List<Dept> selectByDname(String dname);
+// todo: 1-2) 위의 꺼 다르게 코딩 : 참고
+//@Query(value = "SELECT TD.* FROM TB_DEPT TD WHERE TD.DNAME LIKE '%' || ?1 || '%'", nativeQuery = true)
+//List<Dept> selectByDname(String dname);
+
+// todo: 2) dname like 검색 : 추천 ( 객체 쿼리)
+//    객체쿼리 만드는 방법 : 테이블 -> 클래스명
+//                       컬럼명 -> 속성명
+//                       * -> 사용하지 않음, 클래스명의 별칭을 붙여서 사용
+//                       (대소문자 구분)
+//@Query(value = "SELECT TD FROM TB_Dept TD WHERE TD.dname LIKE '%' || :dname || '%'")
+//List<Dept> selectByDname(@Param("dname") String dname);
+
+//    todo: 3) 부서테이블에서 부서명(dname)과 위치(loc)를 매개변수로 받아
+//    조회하는 함수를 작성하려고 한다.
+//    단, nativeQuery = true 사용하세요
+
+    @Query(value = "SELECT D.* FROM TB_DEPT D " +
+            "WHERE D.DNAME = :dname " +
+            "AND   D.LOC   = :loc "
+            , nativeQuery = true)
+    List<Dept> selectByDnameAndLoc(@Param("dname") String dname,
+                                   @Param("loc") String loc);
+
+//  todo:4) 부서테이블의 부서번호를 sum, avg, max, min 값을
+//      출력하는 함수를 작성하세요.
+//      단,  nativeQuery = true 사용하세요
+//      , DTO 클래스에 저장하세요
+@Query(value = "SELECT SUM(D.DNO) AS sumVar " +
+        "     , AVG(D.DNO) AS avgVar " +
+        "     , MAX(D.DNO) AS maxVar  " +
+        "     , MIN(D.DNO) AS minVar  " +
+        "FROM TB_DEPT D",
+        nativeQuery = true)
+List<DeptGroupDto> selectByGroupFunc();
+
+//    todo: 5) SQL 기본 내장 함수를 사용하는 함수를 작성하세요.
+//      단,  nativeQuery = true 사용하세요
+    @Query(value = "SELECT UPPER(D.DNAME) AS upperDname\n" +
+            "     , LOWER(D.DNAME) AS lowerDname\n" +
+            "     , Trim(' Oracle ') As trimOracle\n" +
+            "     , TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') AS charSysdate\n" +
+            "FROM TB_DEPT D",
+            nativeQuery = true)
+    List<DeptGroupDto> selectByBasicFunc();
+
+//    todo: 6) SQL 기본 내장 함수를 사용하는 함수를 작성하세요.
+//      단,  nativeQuery = true 사용하세요
+//    todo: 6) case when 사용 쿼리
+//     dno < 20 연말 보너스 100%
+//     dno > 20   연말 보너스 200%
+//     모두 아니면 연말 보너스 없음 이라고 출력하세요
+@Query(value = "SELECT D.DNO, " +
+        "       CASE WHEN D.DNO <20 THEN '연말 보너스 100%' " +
+        "            WHEN D.DNO >20 THEN '연말 보너스 200%' " +
+        "            ELSE '연말 보너스 없음' " +
+        "        END AS incentive " +
+        "FROM TB_DEPT D ",
+        nativeQuery = true)
+List<DeptGroupDto> selectByCase();
+
+//    ----------------------------------------------
+//    JPA 페이징 처리 : 요청 페이징 객체 - Pageable (매개변수)
+//                    결과 페이징 객체 - Page      (리턴값)
+//    -----------------------------------------------
+//    1) 쿼리 메소드 : 함수명으로 sql 문 실행하기
+//    1-1) dname like 검색
+    Page<Dept> findAllByDnameContaining(String dname, Pageable pageable);
+
+
+//    1-2) 쿼리 메소드 : findAll() (jpa 기본함수)
+
+    //    2) @Query : 페이징 처리 (오라클 쿼리 : countQuery 속성 추가)
+    @Query(value = "SELECT D.* FROM TB_DEPT D " +
+            "WHERE D.DNAME LIKE '%' || :dname || '%'",
+            countQuery = "SELECT COUNT(*) FROM TB_DEPT D " +
+                    "WHERE D.DNAME LIKE '%' || :dname || '%'",
+            nativeQuery = true)
+    Page<Dept> selectByDnamePage(@Param("dname") String dname,
+                                 Pageable pageable);
+
+    //    3) @Query 페이징 + 조인(부서 + 사원) : DeptEmpDto
+    @Query(value = "SELECT D.*, E.ENO, E.ENAME, E.SALARY " +
+            "FROM TB_DEPT D, TB_EMP E " +
+            "WHERE D.DNO = E.DNO ",
+            countQuery = "SELECT COUNT(*) " +
+                    "FROM TB_DEPT D, TB_EMP E " +
+                    "WHERE D.DNO = E.DNO ",
+            nativeQuery = true)
+    Page<DeptEmpDto> selectNativeJoinPage(Pageable pageable);
 }
+
+
