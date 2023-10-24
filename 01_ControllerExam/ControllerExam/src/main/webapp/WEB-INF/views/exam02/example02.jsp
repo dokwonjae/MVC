@@ -18,7 +18,7 @@
 <body>
 <div class="container">
     <h2>숫자로 url 매개변수를 전달해서 화면에 출력해 보세요.</h2>
-    <%-- TODO: el(Experssion language) 표현식 : ${변수명}  --%>
+<%-- TODO: el(Experssion language) 표현식 : ${변수명}  --%>
     <p>${greeting}</p>
 </div>
 </body>

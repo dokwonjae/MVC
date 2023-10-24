@@ -8,11 +8,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * fileName : WebMvcConfig
  * author : kangtaegyung
  * date : 2023/07/29
- * description : JSP 설정 파일
+ * description : JSP 를 사용 하기 위한 설정 파일
  * 요약 :
- * @Configuration : 어노테이션, 자바파일에 환경 설정 기능 부여
+ *    @Configuration : 어노테이션 , 자바파일에 환경 설정 기능 부여
  * <p>
-
  * ===========================================================
  * DATE            AUTHOR             NOTE
  * -----------------------------------------------------------

@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%--TODO: jstl 표현식 사용을 위한 import --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!doctype html>
 <html lang="en">
@@ -10,8 +12,9 @@
     <title>Document</title>
 </head>
 <body>
-<p>${greeting}</p>
-<p>${greeting2}</p>
-<p>${greeting3}</p>
+<%-- TODO: /exam01/hello2 에 "안녕 hello2 페이지 " 출력하기 --%>
+    <p>${greeting}</p>
+    <p>${greeting2}</p>
+    <p>${greeting3}</p>
 </body>
 </html>

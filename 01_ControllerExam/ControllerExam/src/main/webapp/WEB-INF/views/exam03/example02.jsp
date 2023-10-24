@@ -18,7 +18,7 @@
 <body>
 <div class="container">
     <h2>연습 2 </h2>
-    <%-- TODO: el(Experssion language) 표현식 : ${변수명}  --%>
+<%-- TODO: el(Experssion language) 표현식 : ${변수명}  --%>
     <p>${list}</p>
 
     <table class="table">
@@ -31,8 +31,8 @@
         </thead>
         <tbody>
         <tr>
-            <%--        TODO: jsp 반복문 : jstl 표현식   --%>
-            <%--           <c:forEach var="일반변수" items="${배열}"> --%>
+<%--        TODO: jsp 반복문 : jstl 표현식   --%>
+<%--           <c:forEach var="일반변수" items="${배열}"> --%>
             <c:forEach var="data" items="${list}">
                 <td>${data}</td>
             </c:forEach>

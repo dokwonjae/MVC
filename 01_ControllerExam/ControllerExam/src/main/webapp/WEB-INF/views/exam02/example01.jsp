@@ -18,7 +18,7 @@
 <body>
 <div class="container">
     <h2>dname(Sales)의 값을 url 쿼리스트링으로 전달해서 출력하기</h2>
-    <%-- TODO: el(Experssion language) 표현식 : ${변수명}  --%>
+<%-- TODO: el(Experssion language) 표현식 : ${변수명}  --%>
     <p>${greeting}</p>
 </div>
 </body>

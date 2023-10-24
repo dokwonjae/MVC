@@ -52,20 +52,22 @@ public class HelloController {
         return "exam01/example01.jsp";
     }
 
-//  TODO: 연습 2) url : /exam01/hello3
+    //  TODO: 연습 2) url : /exam01/hello3
 //               jsp : "exam01/example02.jsp"
 //               결과 :  "안녕 JSP 페이지야 "
 //                      "JSP 에는 JSTL "
 //                      "EL 표현식이 있습니다. "
-
     @GetMapping("/exam01/hello3")
     public String Hello3(Model model) {
+//    TODO: 해위맵 자료구조 : (키, 값) => jsp 페이지로 변수를(greeting, greeting2 ...) 전송
         model.addAttribute("greeting", "안녕 JSP 페이지야");
         model.addAttribute("greeting2", "JSP 에는 JSTL ");
         model.addAttribute("greeting3", "EL 표현식이 있습니다. ");
+
         return "exam01/example02.jsp";
     }
-    //  TODO: 예제 2) JSP 페이지로 모든 자료형을 보내기
+
+//  TODO: 예제 2) JSP 페이지로 모든 자료형을 보내기
 //            url : /exam01/operation
 //            jsp : exam01/operation.jsp
     @GetMapping("/exam01/operation")
@@ -89,19 +91,40 @@ public class HelloController {
 //        jsp 페이지명 :  exam01/example03.jsp
 //        결과        : boolean(bFlag), int(iParam),
 //                     long(lParam), double(dParam) 변수 4개를
-//                     만들어서 각각 자료형으로 전달해서 jsp 출력하세요
+//                     만들어서 각각 자료형으로 전달해서 jsp 로 출력하세요
+
     @GetMapping("/exam01/hello4")
-    public String hello4(Model model) {
-        Boolean bFlag = true;
-        int iParam = 10;
-        long lParam = 15L;
-        double dParam = 10;
+    public String Hello4(Model model) {
+
+        boolean bFlag = true;
+        int iParam    = 10;
+        long lParam   = 15L;
+        double dParam = 20.2;
 
         model.addAttribute("bFlag", bFlag);
         model.addAttribute("iParam", iParam);
         model.addAttribute("lParam", lParam);
         model.addAttribute("dParam", dParam);
 
+//      TODO: Debugging : 기본 : 변수의 값 추적
+        System.out.println("bFlag " + bFlag);
+        System.out.println("iParam " + iParam);
+        System.out.println("lParam " + lParam);
+        System.out.println("dParam " + dParam);
+
         return "exam01/example03.jsp";
     }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+

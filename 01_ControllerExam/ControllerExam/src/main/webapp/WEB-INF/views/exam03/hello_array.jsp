@@ -18,7 +18,7 @@
 <body>
 <div class="container">
     <h2>예제2 : URL 매개변수를 ArrayList 로 View 에 전달</h2>
-    <%-- TODO: el(Experssion language) 표현식 : ${변수명}  --%>
+<%-- TODO: el(Experssion language) 표현식 : ${변수명}  --%>
     <p>${list}</p>
 
     <table class="table">

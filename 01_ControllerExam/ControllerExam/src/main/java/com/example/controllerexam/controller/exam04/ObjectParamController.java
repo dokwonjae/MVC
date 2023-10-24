@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/exam04")
 public class ObjectParamController {
 
-    //  TODO: url 테스트 : http://localhost:8000/exam04/object-param?id=forbob&name=kang
+//  TODO: url 테스트 : http://localhost:8000/exam04/object-param?id=forbob&name=kang
 //    @ModelAttribute : 객체의 속성명으로 jsp로 각각 전달
 //      Member 클래스의 속성명 == url 의 매개변수명 : id , name
     @GetMapping("/object-param")
@@ -33,18 +33,19 @@ public class ObjectParamController {
         return "exam04/object_param.jsp";
     }
 
-    //  TODO: 연습 1)  모델에 Dept(부서) 클래스를 만들어서 @ModelAttribute 어노테이션으로 전달받고
+//  TODO: 연습 1)  모델에 Dept(부서) 클래스를 만들어서 @ModelAttribute 어노테이션으로 전달받고
 //    전달 받은 값을 화면에 출력해 보세요.
 //   url : /example01
 //   jsp : exam04/example01.jsp
 //   url 테스트 : http://localhost:8000/exam04/example01?dno=10&dname=Accounting&loc=Daegu
     @GetMapping("/example01")
     public String getExample01(
-            @ModelAttribute Dept dept
+        @ModelAttribute Dept dept
     ){
         return "exam04/example01.jsp";
     }
 }
+
 
 
 

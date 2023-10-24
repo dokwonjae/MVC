@@ -17,8 +17,8 @@
 </head>
 <body>
 <div class="container">
-    <h2>예제1 : URL 매개변수 2개를 각각 키이름으로 전달</h2>
-    <%-- TODO: el(Experssion language) 표현식 : ${변수명}  --%>
+    <h2>연습 1) </h2>
+<%-- TODO: el(Experssion language) 표현식 : ${변수명}  --%>
     <p>${dno}</p>
     <p>${dname}</p>
     <p>${loc}</p>

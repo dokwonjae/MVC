@@ -12,8 +12,8 @@
     <title>Document</title>
 </head>
 <body>
-<p>${greeting}</p>
-<p>${greeting2}</p>
-<p>${greeting3}</p>
+    <p>${greeting}</p>
+    <p>${greeting2}</p>
+    <p>${greeting3}</p>
 </body>
 </html>

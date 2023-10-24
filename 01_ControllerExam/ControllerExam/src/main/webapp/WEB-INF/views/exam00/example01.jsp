@@ -1,5 +1,6 @@
 <%-- 아래 page 지시자가 있어야 함 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,6 +11,6 @@
     <title>Document</title>
 </head>
 <body>
-Hello JSP & Spring boot
+    Hello JSP & Spring boot
 </body>
 </html>

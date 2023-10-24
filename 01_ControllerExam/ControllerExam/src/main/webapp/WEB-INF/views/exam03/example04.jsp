@@ -16,35 +16,35 @@
 
 </head>
 <body>
-<div class="container">
-    <%-- TODO: 연습 4 --%>
-    <h2>연습 4</h2>
-    <p>${title}</p>
-    <p>${color}</p>
-    <p>${kind}</p>
+    <div class="container">
+        <%-- TODO: 연습 4 --%>
+        <h2>연습 4</h2>
+        <p>${title}</p>
+        <p>${color}</p>
+        <p>${kind}</p>
 
-    <%--        TODO: if 조건문으로 출력하기 : jstl 표현식, else 없음 --%>
-    <%--           사용법 : <c:if test="${조건식}">실행문</c:if> --%>
-    <c:if test="${title == '아반떼'}">
-        <p>아반떼가 맞습니다.</p>
-    </c:if>
+<%--        TODO: if 조건문으로 출력하기 : jstl 표현식, else 없음 --%>
+<%--           사용법 : <c:if test="${조건식}">실행문</c:if> --%>
+        <c:if test="${title == '아반떼'}">
+            <p>아반떼가 맞습니다.</p>
+        </c:if>
 
-    <%--        TODO: choose 조건문으로 출력하기 , else 있음 --%>
-    <%--           사용법 <c:choose> --%>
-    <%--           (if, else if): <c:when test="조건문">실행문</c:when> --%>
-    <%--           (else): <c:otherwise>실행문</c:otherwise> --%>
-    <%--                </c:choose> --%>
-    <c:choose>
-        <c:when test="${color == 'grey'}">
-            회색입니다.
-        </c:when>
-        <c:when test="${color == 'yellow'}">
-            노란색입니다.
-        </c:when>
-        <c:otherwise>
-            다른색입니다.
-        </c:otherwise>
-    </c:choose>
-</div>
+<%--        TODO: choose 조건문으로 출력하기 , else 있음 --%>
+<%--           사용법 <c:choose> --%>
+<%--           (if, else if): <c:when test="조건문">실행문</c:when> --%>
+<%--           (else): <c:otherwise>실행문</c:otherwise> --%>
+<%--                </c:choose> --%>
+        <c:choose>
+            <c:when test="${color == 'grey'}">
+                회색입니다.
+            </c:when>
+            <c:when test="${color == 'yellow'}">
+                노란색입니다.
+            </c:when>
+            <c:otherwise>
+                다른색입니다.
+            </c:otherwise>
+        </c:choose>
+    </div>
 </body>
 </html>

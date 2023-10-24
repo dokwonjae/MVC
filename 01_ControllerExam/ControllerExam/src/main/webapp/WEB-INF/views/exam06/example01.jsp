@@ -16,26 +16,26 @@
 
 </head>
 <body>
-<p>${list}</p>
-<div class="container">
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">dno</th>
-            <th scope="col">dname</th>
-            <th scope="col">loc</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <%--                TODO: 반복문 --%>
-            <c:forEach var="data" items="${list}">
-                <td>${data}</td>
-            </c:forEach>
-        </tr>
-        </tbody>
-    </table>
-</div>
+    <p>${list}</p>
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">dno</th>
+                <th scope="col">dname</th>
+                <th scope="col">loc</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+<%--                TODO: 반복문 --%>
+                <c:forEach var="data" items="${list}">
+                    <td>${data}</td>
+                </c:forEach>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
 </body>
 </html>

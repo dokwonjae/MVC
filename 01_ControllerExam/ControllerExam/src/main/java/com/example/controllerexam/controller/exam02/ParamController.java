@@ -20,13 +20,13 @@ import org.springframework.web.bind.annotation.RequestParam;
  * 2023-10-05         GGG          최초 생성
  */
 @Controller
-// TODO: @RequestMapping("/공통url") : 공통url 함수의 url 과 합쳐져서 사용됨
+// TODO: @RequestMapping("/공통url") : 공통url 과 함수의 url 이 합쳐져서 사용됨
 //   예) @RequestMapping("/exam02") + @GetMapping("/hello-name")
 //       => url : /exam02/hello-name
 @RequestMapping("/exam02")
 public class ParamController {
 
-    //  TODO: 쿼리스트링 방식 : url?변수명=값 => 다른 jsp 페이지로 값을 전달할 수 있음
+//  TODO: 쿼리스트링 방식 : url?변수명=값 => 다른 jsp 페이지로 값을 전달할 수 있음
 //        (vs 파라메터 방식   : url/값       => 다른 jsp 페이지로 값을 전달할 수 있음 )
 //       @RequestParam : 쿼리스트링 방식으로 변수에 값을 저장해서 다른 페이지로 전달하는 어노테이션
 //        사용법 : 함수명(Model model, @RequestParam String 변수명){}
@@ -40,7 +40,7 @@ public class ParamController {
         return "exam02/hello.jsp";
     }
 
-    //  TODO: 연습 1) url : /exam02/hello-dname
+//  TODO: 연습 1) url : /exam02/hello-dname
 //               jsp : exam02/example01.jsp
 //               문제 : dname(Sales)의 값을 url 쿼리스트링으로 전달해서
 //                example01.jsp 에 출력해 보세요
@@ -49,11 +49,11 @@ public class ParamController {
     @GetMapping("/hello-dname")
     public String HelloName2(Model model,
                              @RequestParam(defaultValue = "") String dname) {
-        model.addAttribute("greeting", "부서명 :" + dname);
+            model.addAttribute("greeting", "부서명 :" + dname);
         return "exam02/example01.jsp";
     }
 
-    //  TODO: 연습 2) 숫자로 url 매개변수를 전달해서 화면에 출력해 보세요.
+//  TODO: 연습 2) 숫자로 url 매개변수를 전달해서 화면에 출력해 보세요.
 //         url : /exam02/hello-no
 //         jsp : exam02/example02.jsp
 //         결과 : 20
@@ -61,10 +61,11 @@ public class ParamController {
     @GetMapping("/hello-no")
     public String HelloName3(Model model,
                              @RequestParam(defaultValue = "0") int no){
-        model.addAttribute("greeting", no);
+            model.addAttribute("greeting", no);
         return "exam02/example02.jsp";
     }
 }
+
 
 
 

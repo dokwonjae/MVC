@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%--TODO: jstl 표현식 사용을 위한 import --%>
+<%--TODO: c lib import --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!doctype html>
@@ -12,7 +12,6 @@
     <title>Document</title>
 </head>
 <body>
-    <p>${id}</p>
-    <p>${name}</p>
+    <h2>꼬리말입니다.</h2>
 </body>
 </html>

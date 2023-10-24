@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @ToString
 @AllArgsConstructor
 public class Member {
-    //    TODO: 속성, 생성자 , 함수(getter/setter)
+//    TODO: 속성, 생성자 , 함수(getter/setter)
     String id;    // 회원 id
     String name;  // 회원명
 }

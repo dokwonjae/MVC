@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%--TODO: jstl 표현식 사용을 위한 import --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,6 +12,7 @@
     <title>Document</title>
 </head>
 <body>
-<p>${name}</p>
+<%-- TODO: el 표현식 --%>
+    <p>${name}</p>
 </body>
 </html>
